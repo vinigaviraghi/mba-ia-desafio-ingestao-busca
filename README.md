@@ -20,7 +20,22 @@ pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Edite o `.env` com sua `GOOGLE_API_KEY`. Coloque o arquivo `document.pdf` na raiz do projeto.
+### Edite o `.env` e ajuste as seguintes informações:
+
+#### Campos obrigatórios:
+
+```bash
+GOOGLE_API_KEY: chave do provedor usado para gerar embeddings e respostas.
+DATABASE_URL: URL de conexão com o banco PostgreSQL com pgvector.
+```
+
+#### Ajuste se necessário:
+
+```bash
+GOOGLE_EMBEDDING_MODEL: modelo de embeddings do Google/Gemini. O padrão sugerido é models/gemini-embedding-001.
+PG_VECTOR_COLLECTION_NAME: use outro nome caso queira criar uma collection separada para outro PDF ou outro provedor.
+PDF_PATH: pode ser um caminho relativo ao projeto, como document.pdf, ou um caminho absoluto.
+```
 
 ## Execução
 

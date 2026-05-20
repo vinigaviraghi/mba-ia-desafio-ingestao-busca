@@ -46,7 +46,7 @@ _llm = None
 
 def get_embeddings() -> GoogleGenerativeAIEmbeddings:
     return GoogleGenerativeAIEmbeddings(
-        model=os.getenv("GOOGLE_EMBEDDING_MODEL"),
+        model=os.getenv("GOOGLE_EMBEDDING_MODEL", "models/gemini-embedding-001"),
         google_api_key=os.getenv("GOOGLE_API_KEY"),
     )
 
@@ -56,7 +56,7 @@ def get_vector_store() -> PGVector:
     if _vector_store is None:
         _vector_store = PGVector(
             embeddings=get_embeddings(),
-            collection_name=os.getenv("PG_VECTOR_COLLECTION_NAME"),
+            collection_name=os.getenv("PG_VECTOR_COLLECTION_NAME", "mba_docs"),
             connection=os.getenv("DATABASE_URL"),
             use_jsonb=True,
         )

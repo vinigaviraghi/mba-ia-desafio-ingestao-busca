@@ -41,7 +41,7 @@ def ingest_pdf():
         sys.exit(1)
 
     embedding = get_embeddings()
-    collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME")
+    collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME", "mba_docs")
     connection = os.getenv("DATABASE_URL")
     store = None
 
